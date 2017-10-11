@@ -14,5 +14,7 @@ public interface CustomerDao {
 
 	public List<Customer> getCustomersByPage(int current_page, int page_size);
 
+	public void deleteCustomerById(Long id);
+
 
 }

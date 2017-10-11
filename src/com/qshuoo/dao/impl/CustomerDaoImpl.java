@@ -34,4 +34,11 @@ public class CustomerDaoImpl implements CustomerDao {
 		return query.list();
 	}
 
+	@Override
+	public void deleteCustomerById(Long id) {
+		Session session = HibernateUtils.getCurrentSession();
+		Customer customer = session.get(Customer.class, id);
+		session.delete(customer);
+	}
+
 }

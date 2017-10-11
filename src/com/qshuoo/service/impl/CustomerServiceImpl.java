@@ -31,7 +31,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public long getCustomerCount() throws CustomerException {
-		// TODO Auto-generated method stub
 		Session session = HibernateUtils.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		long count = 0;
@@ -64,6 +63,19 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		
 		return customers;
+	}
+
+	@Override
+	public void deleteCustomerById(Long id) throws CustomerException {
+		Session session = HibernateUtils.getCurrentSession();
+		session.beginTransaction();
+		try {
+			cd.deleteCustomerById(id);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			throw new CustomerException(e.getMessage());
+		}
 	}
 
 }

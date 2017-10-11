@@ -15,4 +15,6 @@ public interface CustomerService {
 
 	public List<Customer> getCustomersByPage(int current_page, int page_size) throws CustomerException;
 
+	public void deleteCustomerById(Long long1) throws CustomerException;
+
 }
