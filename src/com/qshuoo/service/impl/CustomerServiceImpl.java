@@ -1,6 +1,9 @@
 package com.qshuoo.service.impl;
 
+import java.util.List;
+
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.qshuoo.dao.CustomerDao;
 import com.qshuoo.dao.impl.CustomerDaoImpl;
@@ -12,19 +15,55 @@ import com.qshuoo.utils.HibernateUtils;
 public class CustomerServiceImpl implements CustomerService {
 
 	CustomerDao cd = new CustomerDaoImpl();
+
 	@Override
-	public void addCustomer(Customer customer) throws CustomerException{
+	public void addCustomer(Customer customer) throws CustomerException {
 		Session session = HibernateUtils.getCurrentSession();
 		session.beginTransaction();
 		try {
-			cd.insertCustomer(customer, session);
+			cd.insertCustomer(customer);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			throw new CustomerException();
-		} finally {
-			session.close();
 		}
+	}
+
+	@Override
+	public long getCustomerCount() throws CustomerException {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		long count = 0;
+		try {
+			count = cd.getCustomerCount();
+			transaction.commit();
+		} catch (Exception e) {
+			transaction.rollback();
+			throw new CustomerException();
+		}
+		return count;
+	}
+
+	@Override
+	public long getTotalPages(long totalNums, int pageSize) {
+		return totalNums / pageSize + (totalNums % pageSize == 0 ? 0 : 1);
+	}
+
+	@Override
+	public List<Customer> getCustomersByPage(int current_page, int page_size) throws CustomerException {
+		Session session = HibernateUtils.getCurrentSession();
+		session.beginTransaction();
+		List<Customer> customers = null;
+		try {
+			customers = cd.getCustomersByPage(current_page, page_size);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			throw new CustomerException(e.getMessage());
+		}
+		
+		return customers;
 	}
 
 }
