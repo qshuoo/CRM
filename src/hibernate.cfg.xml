@@ -18,12 +18,13 @@
   <!-- 自动创建或更新表 -->
   <property name="hibernate.hbm2ddl.auto">update</property>
   <!-- 显示sql语句 -->
-  <!-- <property name="hibernate.show_sql">true</property> -->
+  <property name="hibernate.show_sql">true</property>
   <!-- 格式化sql语句 -->
-  <!-- <property name="hibernate.format_sql">true</property> -->
+  <property name="hibernate.format_sql">true</property>
   <!-- 调用getCurrentSession()必须有的配置，给当前线程绑定一个session -->
   <property name="current_session_context_class">thread</property>
   <!-- 添加映射路径 -->
   <mapping resource="com/qshuoo/pojo/Customer.hbm.xml"/>
+  <mapping resource="com/qshuoo/pojo/LinkMan.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

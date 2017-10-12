@@ -10,11 +10,13 @@ public interface CustomerDao {
 
 	public void insertCustomer(Customer customer);
 
-	public long getCustomerCount();
+	public Long getCustomerCount();
 
 	public List<Customer> getCustomersByPage(int current_page, int page_size);
 
 	public void deleteCustomerById(Long id);
+	
+	public Customer getCustomerById(Long id);
 
 
 }

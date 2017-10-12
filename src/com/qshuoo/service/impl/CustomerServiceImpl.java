@@ -30,10 +30,10 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public long getCustomerCount() throws CustomerException {
+	public Long getCustomerCount() throws CustomerException {
 		Session session = HibernateUtils.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		long count = 0;
+		Long count = null;
 		try {
 			count = cd.getCustomerCount();
 			transaction.commit();
@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public long getTotalPages(long totalNums, int pageSize) {
+	public Long getTotalPages(Long totalNums, int pageSize) {
 		return totalNums / pageSize + (totalNums % pageSize == 0 ? 0 : 1);
 	}
 

@@ -26,8 +26,8 @@ public class GetCustomerCountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CustomerService cs = new CustomerServiceImpl();
 		try {
-			long cust_nums = cs.getCustomerCount();
-			long total_pages = cs.getTotalPages(cust_nums, 4);
+			Long cust_nums = cs.getCustomerCount();
+			Long total_pages = cs.getTotalPages(cust_nums, 4);
 			HttpSession session = request.getSession();
 			session.setAttribute("cust_nums", cust_nums);
 			session.setAttribute("total_pages", total_pages);

@@ -18,10 +18,10 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public long getCustomerCount() {
+	public Long getCustomerCount() {
 		Session session = HibernateUtils.getCurrentSession();
 		Query<Long> query = session.createQuery("select count(*) from Customer", Long.class);
-		long count = query.uniqueResult();
+		Long count = query.uniqueResult();
 		return count;
 	}
 
@@ -39,6 +39,13 @@ public class CustomerDaoImpl implements CustomerDao {
 		Session session = HibernateUtils.getCurrentSession();
 		Customer customer = session.get(Customer.class, id);
 		session.delete(customer);
+	}
+
+	@Override
+	public Customer getCustomerById(Long id) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtils.getCurrentSession();
+		return session.get(Customer.class, id);
 	}
 
 }

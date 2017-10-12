@@ -56,6 +56,9 @@
 								<td>客户名称：</td>
 								<td><INPUT class=textbox id=sChannel2 style="WIDTH: 180px"
 									maxLength=50 name="cust_name"></td>
+								<td>客户级别 ：</td>
+								<td><INPUT class=textbox id=sChannel2 style="WIDTH: 180px"
+									maxLength=50 name="cust_level"></td>
 							</TR>
 							<TR>
 
@@ -73,14 +76,6 @@
 								<td>所属行业 ：</td>
 								<td><INPUT class=textbox id=sChannel2 style="WIDTH: 180px"
 									maxLength=50 name="cust_industry"></td>
-							</TR>
-							<TR>
-								<td>客户级别 ：</td>
-								<td><INPUT class=textbox id=sChannel2 style="WIDTH: 180px"
-									maxLength=50 name="cust_level"></td>
-								<td>联系人：</td>
-								<td><INPUT class=textbox id=sChannel2 style="WIDTH: 180px"
-									maxLength=50 name="cust_linkman"></td>
 							</TR>
 							<TR>
 								<td>固定电话 ：</td>

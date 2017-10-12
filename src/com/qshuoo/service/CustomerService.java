@@ -9,12 +9,12 @@ public interface CustomerService {
 
 	public void addCustomer(Customer customer) throws CustomerException;
 
-	public long getCustomerCount() throws CustomerException;
+	public Long getCustomerCount() throws CustomerException;
 
-	public long getTotalPages(long totalNums, int pageSize);
+	public Long getTotalPages(Long totalNums, int pageSize);
 
 	public List<Customer> getCustomersByPage(int current_page, int page_size) throws CustomerException;
 
-	public void deleteCustomerById(Long long1) throws CustomerException;
+	public void deleteCustomerById(Long Long1) throws CustomerException;
 
 }

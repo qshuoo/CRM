@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 添加xml约束 -->
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.qshuoo.pojo">
+	<class name="LinkMan" table="linkman">
+		<id name="linkman_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="linkman_name"></property>
+		<!-- <property name="linkman_cust_id"></property> -->
+		<property name="linkman_gender"></property>
+		<property name="linkman_phone"></property>
+		<property name="linkman_mobile"></property>
+		<property name="linkman_email"></property>
+		<property name="linkman_qq"></property>
+		<property name="linkman_position"></property>
+		<property name="linkman_memo"></property>
+
+		<many-to-one name="customer" class="Customer">
+			<column name="linkman_cust_id" not-null="true"></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>
