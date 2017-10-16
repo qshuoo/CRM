@@ -35,7 +35,7 @@ public class GetCustomerCountServlet extends HttpServlet {
 			request.getRequestDispatcher("GetCustomerByPageServlet").forward(request, response);
 		} catch (CustomerException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			e.printStackTrace();
 			response.getWriter().write("<script>");
 			response.getWriter().write("alert('跳转失败');");
 			response.getWriter().write("location.href='index.jsp';");

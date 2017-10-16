@@ -12,11 +12,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.4.4.min.js"></script>
 <SCRIPT language=javascript>
 	function to_page(page){
-		if(page){
+		var maxPage = $("#maxPage").text();
+		if(page && page <= maxPage){
 			$("#page").val(page);
 		}
-		document.customerForm.submit();
-		
+		var current = $("#page").val();
+		if (current > 0 && current <= maxPage) {
+			document.customerForm.submit();
+		}
 	}
 </SCRIPT>
 
@@ -24,7 +27,7 @@
 </HEAD>
 <BODY>
 	<FORM id="customerForm" name="customerForm"
-		action="${pageContext.request.contextPath }/linkmanServlet?method=list"
+		action="${pageContext.request.contextPath }/GetLinkManByPageServlet"
 		method=post>
 		
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -81,24 +84,35 @@
 											<TBODY>
 												<TR
 													style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
-													<TD>联系人名称</TD>
+													<TD>编号</TD>
+													<TD>姓名</TD>
+													<TD>客户id</TD>
 													<TD>性别</TD>
 													<TD>办公电话</TD>
 													<TD>手机</TD>
+													<TD>邮箱</TD>
+													<TD>QQ</TD>
+													<TD>职位</TD>
+													<TD>备注</TD>
 													<TD>操作</TD>
 												</TR>
 												<c:forEach items="${list }" var="linkman">
 												<TR
 													style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-													<TD>${linkman.lkmName }</TD>
-													<TD>${linkman.lkmGender }</TD>
-													<TD>${linkman.lkmPhone }</TD>
-													<TD>${linkman.lkmMobile }</TD>
-													
+													<TD>${linkman.linkman_id }</TD>
+													<TD>${linkman.linkman_name }</TD>
+													<TD>${linkman.customer.cust_id}</TD>
+													<TD>${linkman.linkman_gender }</TD>
+													<TD>${linkman.linkman_phone }</TD>
+													<TD>${linkman.linkman_mobile }</TD>
+													<TD>${linkman.linkman_email }</TD>
+													<TD>${linkman.linkman_qq }</TD>
+													<TD>${linkman.linkman_position }</TD>
+													<TD>${linkman.linkman_memo }</TD>
 													<TD>
-													<a href="${pageContext.request.contextPath }/linkmanServlet?method=edit&lkmId=${linkman.lkmId}">修改</a>
+													<a href="${pageContext.request.contextPath }/linkmanServlet?method=edit&lkmId=${linkman.linkman_id}">修改</a>
 													&nbsp;&nbsp;
-													<a href="${pageContext.request.contextPath }/linkmanServlet?method=delete&lkmId=${linkman.lkmId}">删除</a>
+													<a href="${pageContext.request.contextPath }/linkmanServlet?method=delete&lkmId=${linkman.linkman_id}">删除</a>
 													</TD>
 												</TR>
 												
@@ -113,19 +127,13 @@
 									<TD><SPAN id=pagelink>
 											<DIV
 												style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
-												共[<B>${total}</B>]条记录,[<B>${totalPage}</B>]页
-												,每页显示
-												<select name="pageSize">
+												共[<B>${linkman_nums}</B>]条记录,[<B id="maxPage">${total_pages}</B>]页
 												
-												<option value="1" <c:if test="${pageSize==1 }">selected</c:if>>1</option>
-												<option value="30" <c:if test="${pageSize==30 }">selected</c:if>>30</option>
-												</select>
-												条
-												[<A href="javascript:to_page(${page-1})">前一页</A>]
-												<B>${page}</B>
-												[<A href="javascript:to_page(${page+1})">后一页</A>] 
+												[<A href="javascript:to_page(${current_page-1})">前一页</A>]
+												<B id="currentPage">${current_page}</B>
+												[<A href="javascript:to_page(${current_page+1})">后一页</A>] 
 												到
-												<input type="text" size="3" id="page" name="page" />
+												<input type="text" size="3" id="page" name="page" value="${current_page}" />
 												页
 												
 												<input type="button" value="Go" onclick="to_page()"/>

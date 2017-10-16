@@ -18,7 +18,7 @@
 		<property name="cust_phone"></property>
 		<property name="cust_mobile"></property>
 
-		<set name="linkmen" inverse="true">
+		<set name="linkmen" cascade="save-update">
 			<key column="linkman_cust_id"></key>
 			<one-to-many class="LinkMan" />
 		</set>

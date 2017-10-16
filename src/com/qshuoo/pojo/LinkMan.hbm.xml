@@ -20,9 +20,9 @@
 		<property name="linkman_qq"></property>
 		<property name="linkman_position"></property>
 		<property name="linkman_memo"></property>
-
-		<many-to-one name="customer" class="Customer">
-			<column name="linkman_cust_id" not-null="true"></column>
+	
+		<many-to-one name="customer" class="Customer" >
+			<column  name="linkman_cust_id" not-null="true"></column>
 		</many-to-one>
 	</class>
 </hibernate-mapping>

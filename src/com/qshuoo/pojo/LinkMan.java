@@ -97,14 +97,17 @@ public class LinkMan {
 	public void setLinkman_memo(String linkman_memo) {
 		this.linkman_memo = linkman_memo;
 	}
-	
 	@Override
 	public String toString() {
 		return "LinkMan [linkman_id=" + linkman_id + ", linkman_name=" + linkman_name + ", linkman_cust_id="
 				+ linkman_cust_id + ", linkman_gender=" + linkman_gender + ", linkman_phone=" + linkman_phone
 				+ ", linkman_mobile=" + linkman_mobile + ", linkman_email=" + linkman_email + ", linkman_qq="
-				+ linkman_qq + ", linkman_position=" + linkman_position + ", linkman_memo=" + linkman_memo + "]";
+				+ linkman_qq + ", linkman_position=" + linkman_position + ", linkman_memo=" + linkman_memo
+				+ ", customer=" + customer + "]";
 	}
+
+	
+	
 	
 	
 
