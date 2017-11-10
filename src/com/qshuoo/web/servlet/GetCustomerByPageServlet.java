@@ -43,7 +43,7 @@ public class GetCustomerByPageServlet extends HttpServlet {
 			response.sendRedirect("jsp/customer/list.jsp");
 		} catch (CustomerException e) {
 			// TODO Auto-generated catch block
-			 e.printStackTrace();
+			e.printStackTrace();
 			response.getWriter().write("<script>");
 			response.getWriter().write("alert('获取用户列表失败');");
 			response.getWriter().write("location.href='welcome.jsp';");

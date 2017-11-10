@@ -12,18 +12,16 @@ import com.qshuoo.exception.CustomerException;
 import com.qshuoo.service.CustomerService;
 import com.qshuoo.service.impl.CustomerServiceImpl;
 
-
 @WebServlet("/GetCustomerCountServlet")
 public class GetCustomerCountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public GetCustomerCountServlet() {
-        super();
-    }
+	public GetCustomerCountServlet() {
+		super();
+	}
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		CustomerService cs = new CustomerServiceImpl();
 		try {
 			Long cust_nums = cs.getCustomerCount();
@@ -43,8 +41,8 @@ public class GetCustomerCountServlet extends HttpServlet {
 		}
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

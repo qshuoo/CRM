@@ -14,14 +14,13 @@ import com.qshuoo.service.impl.CustomerServiceImpl;
 @WebServlet("/DeleteCustomerServlet")
 public class DeleteCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public DeleteCustomerServlet() {
-        super();
-    }
+	public DeleteCustomerServlet() {
+		super();
+	}
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		CustomerService cs = new CustomerServiceImpl();
 		String cust_id = request.getParameter("cust_id");
 		try {
@@ -38,8 +37,8 @@ public class DeleteCustomerServlet extends HttpServlet {
 		}
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

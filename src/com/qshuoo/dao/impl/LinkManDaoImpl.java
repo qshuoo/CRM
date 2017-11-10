@@ -19,7 +19,7 @@ public class LinkManDaoImpl implements LinkManDao {
 		linkMan.setCustomer(customer);
 		customer.getLinkmen().add(linkMan);
 		session.save(customer);
-		
+
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class LinkManDaoImpl implements LinkManDao {
 		// TODO Auto-generated method stub
 		Session session = HibernateUtils.getCurrentSession();
 		String hql = "select count(*) from LinkMan";
-		Query<Long> query = session.createQuery(hql ,Long.class);
+		Query<Long> query = session.createQuery(hql, Long.class);
 		return query.uniqueResult();
 	}
 
@@ -36,7 +36,7 @@ public class LinkManDaoImpl implements LinkManDao {
 		// TODO Auto-generated method stub
 		Session session = HibernateUtils.getCurrentSession();
 		String hql = "from LinkMan";
-		Query<LinkMan> query = session.createQuery(hql,LinkMan.class);
+		Query<LinkMan> query = session.createQuery(hql, LinkMan.class);
 		query.setFirstResult((current_page - 1) * page_size);
 		query.setMaxResults(page_size);
 		return query.list();

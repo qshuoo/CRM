@@ -10,24 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.qshuoo.exception.CustomerException;
 import com.qshuoo.exception.LinkManException;
-import com.qshuoo.pojo.Customer;
 import com.qshuoo.pojo.LinkMan;
-import com.qshuoo.service.CustomerService;
 import com.qshuoo.service.LinkManService;
-import com.qshuoo.service.impl.CustomerServiceImpl;
 import com.qshuoo.service.impl.LinkManServiceImpl;
 
 @WebServlet("/GetLinkManByPageServlet")
 public class GetLinkManByPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public GetLinkManByPageServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public GetLinkManByPageServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String page = request.getParameter("page");
 		int current_page = 0;
 		if (page == null) {
@@ -46,7 +43,7 @@ public class GetLinkManByPageServlet extends HttpServlet {
 			response.sendRedirect("jsp/linkman/list.jsp");
 		} catch (LinkManException e) {
 			// TODO Auto-generated catch block
-			 e.printStackTrace();
+			e.printStackTrace();
 			response.getWriter().write("<script>");
 			response.getWriter().write("alert('获取用户列表失败');");
 			response.getWriter().write("location.href='welcome.jsp';");
@@ -54,7 +51,8 @@ public class GetLinkManByPageServlet extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
