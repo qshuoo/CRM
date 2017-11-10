@@ -23,6 +23,9 @@ public class EncodingFilter implements Filter {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * 编码过滤
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here

@@ -16,18 +16,16 @@ import com.qshuoo.pojo.LinkMan;
 import com.qshuoo.service.LinkManService;
 import com.qshuoo.service.impl.LinkManServiceImpl;
 
-
 @WebServlet("/AddLinkManServlet")
 public class AddLinkManServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public AddLinkManServlet() {
-        super();
-    }
+	public AddLinkManServlet() {
+		super();
+	}
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		LinkMan linkMan = new LinkMan();
 		LinkManService ls = new LinkManServiceImpl();
 		try {
@@ -51,8 +49,8 @@ public class AddLinkManServlet extends HttpServlet {
 		}
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

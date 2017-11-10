@@ -19,11 +19,12 @@ import com.qshuoo.service.impl.LinkManServiceImpl;
 public class GetLinkManCountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public GetLinkManCountServlet() {
-        super();
-    }
+	public GetLinkManCountServlet() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		LinkManService ls = new LinkManServiceImpl();
 		try {
 			Long linkman_nums = ls.getLinkManCount();
@@ -33,7 +34,7 @@ public class GetLinkManCountServlet extends HttpServlet {
 			session.setAttribute("total_pages", total_pages);
 			request.setAttribute("page", 1);
 			request.getRequestDispatcher("GetLinkManByPageServlet").forward(request, response);
-			
+
 		} catch (LinkManException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,7 +45,8 @@ public class GetLinkManCountServlet extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

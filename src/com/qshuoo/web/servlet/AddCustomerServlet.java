@@ -20,11 +20,12 @@ import com.qshuoo.service.impl.CustomerServiceImpl;
 public class AddCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddCustomerServlet() {
-        super();
-    }
+	public AddCustomerServlet() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Customer customer = new Customer();
 		CustomerService cs = new CustomerServiceImpl();
 		try {
@@ -32,13 +33,13 @@ public class AddCustomerServlet extends HttpServlet {
 			cs.addCustomer(customer);
 			response.sendRedirect("GetCustomerCountServlet");
 		} catch (IllegalAccessException | InvocationTargetException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			response.getWriter().write("<script>");
 			response.getWriter().write("alert('上传失败');");
 			response.getWriter().write("location.href='jsp/customer/add.jsp';");
 			response.getWriter().write("</script>");
 		} catch (CustomerException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			response.getWriter().write("<script>");
 			response.getWriter().write("alert('添加失败');");
 			response.getWriter().write("location.href='jsp/customer/add.jsp';");
@@ -46,7 +47,8 @@ public class AddCustomerServlet extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

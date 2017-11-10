@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
 			session.getTransaction().rollback();
 			throw new CustomerException(e.getMessage());
 		}
-		
+
 		return customers;
 	}
 
